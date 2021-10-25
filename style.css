@@ -1,0 +1,389 @@
+body {
+  box-sizing: border-box;
+  margin: 0;
+  padding: 0;
+  font-family: "Montserrat", sans-serif;
+}
+
+#background-video {
+  width: 100%;
+  height: 30rem;
+  object-fit: cover;
+  position: absolute;
+  left: 0;
+  right: 0;
+  top: 0;
+  bottom: 0;
+  z-index: -1;
+}
+
+.main_header {
+  background-color: rgba(0, 0, 0, 0.2);
+  display: flex;
+  flex-direction: column;
+  width: 100%;
+  height: 30rem;
+}
+
+.check_box {
+  display: none;
+}
+
+.nav_button {
+  background-color: white;
+  border-radius: 50%;
+  height: 2.5rem;
+  width: 2.5rem;
+  text-align: center;
+  position: fixed;
+  top: 0.6rem;
+  right: 1.5rem;
+  z-index: 2000;
+  display: none;
+}
+.navigation_icon {
+  position: relative;
+  margin-top: 1.2rem;
+}
+
+.navigation_icon,
+.navigation_icon::before,
+.navigation_icon::after {
+  display: inline-block;
+  width: 1.5rem;
+  height: 2px;
+  background-color: darkgray;
+}
+
+/*while the before and after pseudo classes of the span is given absolute in reference to the main container which is the .navigation_icon. In order for the before and after pseudo element would didplay we have to insert their content element */
+.navigation_icon::before,
+.navigation_icon::after {
+  content: "";
+  position: absolute;
+  left: 0;
+  transition: all 0.2s;
+}
+
+.navigation_icon::before {
+  top: -0.6rem;
+}
+.navigation_icon::after {
+  top: 0.6rem;
+}
+
+.nav_container {
+  color: white;
+  background-color: rgba(white, black, 0.8);
+  display: flex;
+  flex-direction: row;
+  justify-content: space-between;
+}
+
+.nav_list {
+  display: flex;
+  list-style: none;
+  margin-right: 5rem;
+}
+.fas:hover {
+  color: black;
+}
+.nav_link:hover {
+  color: black;
+}
+.nav_link {
+  color: white;
+  text-decoration: none;
+  margin-right: 2rem;
+}
+
+.header_text {
+  text-align: center;
+  margin: 0 auto;
+  width: 50%;
+}
+
+.header1 {
+  font-size: 3.3rem;
+  color: white;
+  animation-name: moveInLeft;
+  animation-duration: 3s;
+}
+.header2 {
+  font-size: 1.3rem;
+  color: white;
+  animation-name: moveInRight;
+  animation-duration: 3s;
+}
+.responsive_navigation {
+  background-color: rgba(0, 0, 0, 0.5);
+  position: fixed;
+  top: 0;
+  right: 0;
+  width: 100%;
+  height: 100vh;
+  z-index: 4000;
+  transition: all 1s ease-in-out;
+  transform: translate3d(80);
+  opacity: 0; /*if we just set opacity to zero the content would still be there or text*/
+  visibility: hidden; /*So we need to hide the visibility*/
+}
+
+.main_header {
+  position: relative;
+}
+
+.responsive_nav {
+  position: absolute;
+  top: 0;
+  right: 3rem;
+  background-color: #00a19d;
+  height: 100%;
+  width: 15%;
+  box-shadow: 0px 3px 7px white;
+  transition: transform 0.8s ease-in-out;
+  transform: translateX(100%);
+}
+
+.nav-active {
+  transform: translateX(28%);
+}
+
+.responsive_list {
+  list-style: none;
+  display: flex;
+  flex-direction: column;
+  gap: 20px;
+  align-items: flex-start;
+}
+
+.responsive_link:hover {
+  background-position: 100%;
+  color: #b5deff;
+  background-image: linear-gradient(
+    120deg,
+    transparent 0%,
+    transparent 50%,
+    #00a19d 50%
+  );
+  background-size: 225%;
+  transition: all 0.9s;
+  transform: translateX(0.5rem);
+}
+
+.rep_header {
+  margin-left: 10px;
+}
+
+.responsive_link {
+  text-decoration: none;
+  display: inline-block;
+}
+
+.nav_close {
+  height: 10px;
+  text-decoration: none;
+  display: inline-block;
+  position: absolute;
+  top: 1rem;
+  right: 1rem;
+}
+
+.nav {
+  color: white;
+}
+
+.nav_icon {
+  display: inline-block;
+  width: 1em;
+  height: 1em;
+  stroke-width: 0;
+  stroke: currentColor;
+  fill: currentColor;
+}
+
+#check-box:checked ~ .nav_button {
+  background-color: transparent;
+}
+#check-box:checked + .nav_button .navigation_icon {
+  background-color: transparent;
+}
+
+#check-box:checked + .nav_button .navigation_icon::before {
+  top: 0;
+  transform: rotate(135deg);
+  background-color: #e63e6d;
+}
+
+#check-box:checked + .nav_button .navigation_icon::after {
+  top: 0;
+  transform: rotate(-135deg);
+  background-color: #e63e6d;
+}
+
+#check-box:checked ~ .responsive_navigation {
+  opacity: 1;
+  visibility: visible;
+}
+
+@keyframes moveInLeft {
+  0% {
+    opacity: 0;
+    transform: translateX(-100px);
+  }
+
+  80% {
+  }
+
+  100% {
+    opacity: 1;
+    transform: translateX(0);
+  }
+}
+
+@keyframes moveInRight {
+  0% {
+    opacity: 0;
+    transform: translateX(100px);
+  }
+
+  80% {
+  }
+
+  100% {
+    opacity: 1;
+    transform: translateX(0);
+  }
+}
+
+.booking_button {
+  display: inline-block;
+  text-decoration: none;
+  margin-top: 3rem;
+  font-size: 1.5rem;
+  color: white;
+}
+
+.booking_button:hover {
+  background-position: 100%;
+  color: #b5deff;
+  background-image: linear-gradient(
+    120deg,
+    transparent 0%,
+    transparent 50%,
+    #000000 50%
+  );
+  background-size: 225%;
+  transition: all 0.9s;
+  transform: translateX(1rem);
+}
+
+#booking_form {
+  background-color: rgba(0, 0, 0, 0.5);
+  height: 80vh;
+  width: 100%;
+  position: fixed;
+  top: 0;
+  left: 0;
+  z-index: 6000;
+  opacity: 0;
+  visibility: hidden;
+}
+
+#booking_form:target {
+  opacity: 1;
+  visibility: visible;
+}
+
+.booking_content {
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  height: 70%;
+  width: 70%;
+  padding: 20px;
+  background-color: white;
+  overflow: hidden;
+  box-shadow: 0 0.2rem 0.2rem lightblue;
+}
+
+.form_content {
+  margin-top: 2rem;
+}
+
+.pop_up_close:link,
+.pop_up_close:visited {
+  color: red;
+  position: absolute;
+  top: 1rem;
+  right: 1rem;
+  text-decoration: none;
+  display: inline-block;
+  transition: all 0.4s;
+  line-height: 1;
+}
+
+.pop_up_close:hover {
+  color: green;
+}
+
+@media screen and (max-width: 720px) {
+  #background-video {
+    display: none;
+  }
+  body {
+    background: url("./posterImage/roberto-nickson-MA82mPIZeGI-unsplash.jpg")
+      no-repeat;
+    background-size: cover;
+  }
+
+  .nav_button {
+    display: inline-block;
+  }
+
+  .nav {
+    display: none;
+  }
+
+  .booking_button {
+    margin-bottom: 10%;
+  }
+
+  .header1 {
+    font-size: 2rem;
+  }
+
+  .responsive_nav {
+    transition: all 2s;
+    transform: translate3d(30%);
+    width: 50vw;
+  }
+
+  .nav_close {
+    position: absolute;
+    top: 1.2rem;
+    right: 4rem;
+  }
+
+  #booking_form{
+    display: none;
+  }
+}
+
+/* Form/Booking */
+
+.form_item {
+ 
+}
+
+.form_input {
+  
+}
+
+.send {
+  
+}
+
+.send:hover {
+ 
+}
